@@ -343,10 +343,7 @@ class SimulationManager():
 		if not self.has_prev_output:
 			simmed_game_data.to_csv(self.output_file, index=False)
 			self.has_prev_output = True
-			print("There was no previous output but now there is!")
-			print(self.has_prev_output)
 		else:
-			print("There was previous output so it's been added to!")
 			simmed_game_data.to_csv(self.output_file, mode='a', index=False, header=False)
 
 		# game_data = pd.read_csv(self.output_file)
