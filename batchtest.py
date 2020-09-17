@@ -1,5 +1,6 @@
 import argparse
 import importlib
+import os
 import warnings
 
 import numpy as np
@@ -28,13 +29,23 @@ def main():
 
 	args = parser.parse_args()
 
+	strat_path_dir, strat_path_filename = os.path.split(args.strat_file)
+	strat_module_name = ""
+	if len(strat_path_dir) == 0:
+		strat_module_name = strat_path_filename[:-3] # Strip the trailing .py
+	else:
+		relpath = os.path.relpath(strat_path_dir) # Path to 
+		print(relpath)
+		strat_module_name = relpath.replace("\\", ".") + "." + strat_path_filename[:-3]
+		print(strat_module_name)
+
 	try:
-		strat_module = importlib.import_module(args.strat_file)
+		strat_module = importlib.import_module(strat_module_name)
 		strats_to_test = strat_module.ALL_STRATEGIES
 	except ModuleNotFoundError:
-		raise FileNotFoundError("No file found containing strategies at {}.py".format(args.strat_file))
+		raise FileNotFoundError("No file found containing strategies at {}".format(args.strat_file))
 	except AttributeError:
-		raise ValueError("Batch testing expected a dictionary named ALL_STRATEGIES in {}.py but none was found".format(args.strat_file))
+		raise ValueError("Batch testing expected a dictionary named ALL_STRATEGIES in {} but none was found".format(args.strat_file))
 
 	strat_list, title_list, home_strats = parseStrategyInput(strats_to_test)
 
