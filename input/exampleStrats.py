@@ -1,9 +1,12 @@
 from backend.strategyConstants import *
 
+# This file is an example of a strategy specification for the sim tests
+# To run a batch sim test with your desired strategies, copy this file and change/add strategies as needed below
 
 ALL_STRATEGIES = [
 # The following is an example of 1 strategy that will be tested. It is a Python dictionary containing both the title (a string),
-# and specifically formatted home/away strategies using a specific format and constants from backend/strategyConstants.py
+# and specifically formatted home/away strategies using a specific format (similar to that used in the game Strategy window)
+# and constants from backend/strategyConstants.py
 {
 	# Title must be provided for each strategy. If the titles are not unique they will be conflated in the statistical analysis.
 	"Title": "All Power 30 & 3-4 50",

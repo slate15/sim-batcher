@@ -34,7 +34,7 @@ def main():
 	if len(strat_path_dir) == 0:
 		strat_module_name = strat_path_filename[:-3] # Strip the trailing .py
 	else:
-		relpath = os.path.relpath(strat_path_dir) # Path to 
+		relpath = os.path.relpath(strat_path_dir) # Path to the strategy file from this directory
 		print(relpath)
 		strat_module_name = relpath.replace("\\", ".") + "." + strat_path_filename[:-3]
 		print(strat_module_name)
