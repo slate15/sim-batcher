@@ -1,7 +1,7 @@
 # sim-batcher
  Python package used to automate large batch tests for DDSPF 2016
 
-## Quick Setup Guide:
+## Quick Setup Guide
 Requires:
 * Python 3
 * DDSPF 2016
