@@ -47,4 +47,4 @@ The settings.py file contains most of the parameters that should remain the same
 
 These coordinates may change depending on screen size, resolution, etc. The provided autohotkey script "MousePosWatch.ank.ahk" in the utils/ folder can be used to find the x- and y- values for each button for your specific setup. With AutoHotkey installed, simply launch the script by double-clicking the file, press Ctrl-J to start the mouse tooltip, record the coordinates specified in the comments, and press Esc to exit the script once you're done.
 
-\6. Delay settings. Sometimes the DDSPF window is doing some stuff and needs time. These settings specify how long the code waits for those tasks to finish.
+6. Delay settings. Sometimes the DDSPF window is doing some stuff and needs time. These settings specify how long the code waits for those tasks to finish.
