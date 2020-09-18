@@ -144,7 +144,7 @@ def exportSimFiles(ahk):
 	Send !o ; Access Configuration Menu
 	Sleep 3000
 	Click """ + "{}, {}".format(FOCUS_COORDINATES[0], FOCUS_COORDINATES[1]) + """ ; Activate window
-	Send {Tab 16} ; Navigate to Enable Personalities
+	Send {Tab """ + "{}".format(ENABLE_PERSONALITIES_TABS) + """} ; Navigate to Enable Personalities
 	Send {Space} ; Check Enable Personalities
 	Send {Tab} ; Navigate to Save
 	Send {Enter} ; Select Save
@@ -153,7 +153,7 @@ def exportSimFiles(ahk):
 
 	; Export sim files
 	Send !f ; Access File Menu
-	Send {Left 3} ; Navigate to Export menu
+	Send {Left """ + "{}".format(LEFT_PRESSES_TO_EXPORT) + """} ; Navigate to Export menu
 	Send {Down} ; Navigate to Generate Access/CSV files
 	Send {Enter} ; Select Generate Access/CSV files
 	"""

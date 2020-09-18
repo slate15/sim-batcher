@@ -6,12 +6,15 @@ GAME_APPLICATION_PATH = "C:/Program Files (x86)/Wolverine Studios/Draft Day Spor
 # The path to the game output file for the simulated games for the league being tested
 # IMPORTANT: The league must be the first alphabetically in the dropdown list that appears in File -> Open
 GAME_OUTPUT_FILE = "C:/Users/<Username>/Documents/DDSPF/Leagues/<League Name>/Output/<League Name>_Games.csv"
-# The path where you would like the combined output of all tests run to be saved to
+# The path where you would like the combined output of all tests run to be saved to, can be overwritten with the -O command line flag
 RESULTS_FILE = "output/Results.csv"
 
 # GAME SETTINGS
 
 MAX_ITERS = 701 # Maximum iterations your game can run without crashing between reloading the league file
+
+ENABLE_PERSONALITIES_TABS = 16 # How many tabs are needed to get to the "Enable Personalities" box in the Configuration page. Sometimes 16, sometimes 17 apparently.
+LEFT_PRESSES_TO_EXPORT = 3 # How many left button presses are needed to get to the "Export" menu from the "File" dropdown
 
 # Below are the (x, y) coordinates for various buttons on the screen, needed to ensure that the program will click the right things.
 # These can be found using the utils/MousePosWatch.ahk script (requires installing AutoHotkey)
