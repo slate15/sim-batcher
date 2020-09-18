@@ -44,7 +44,7 @@ This code is written for Python 3 and requires a copy of DDSPF 2016 to run (so i
 The settings.py file contains most of the parameters that should remain the same across runs. These include:
 
 1. GAME_APPLICATION_PATH, the filepath of the DDSPF .exe application file.
-2. GAME_OUTPUT_FILE, the filepath of the Games.csv file for the league **IMPORTANT: The league must be listed first alphabetically in the game's dropdown menu for it to be reloaded upon hitting the maximum games simulated for one batch of tests.**
+2. GAME_OUTPUT_FILE, the filepath of the Games.csv file for the league. **IMPORTANT: The league must be listed first alphabetically in the game's dropdown menu for it to be reloaded upon hitting the maximum games simulated for one batch of tests.**
 3. RESULTS_FILE, the target .csv filepath to save the game output to. (Can optionally be specified here, but is overridden by the -O flag in the command line execution)
 4. MAX_ITERS, an upper bound on the number of games that can be run on one league load without the game crashing. If the number of sim runs (-N flag) is specified to exceed MAX_ITERS, the code has methods to run a number smaller than MAX_ITERS multiple times to reach the total target number of simulated games for each strategy.
 5. ENABLE_PERSONALITIES_TABS, the number of tabs needed to reach the "Enable Personalities" checkbox with the Configuration menu open. (Apparently this number can vary depending on whether the FOCUS_COORDINATES clicks on the "League Settings" tab or not, usually either 16 or 17.)
@@ -64,9 +64,9 @@ For the FOCUS_COORDINATES, it seems to work most consistently if you ensure that
 An example strategy definition can be found in input/exampleStrats.py . The input is formatted as a list of Python dictionaries, where each dictionary contains a home strategy and/or an away strategy, plus a title for that test. The strategy is itself a Python dictionary meant to resemble how they are formatted in the game:
 
 `
-{
-	DOWN_AND_DISTANCE: (OFFENSIVE_PLAYBOOK, RUN_PASS_RATIO, DEFENSIVE_PLAYBOOK, BLITZ_RATIO),
-	...
+{  
+	DOWN_AND_DISTANCE: (OFFENSIVE_PLAYBOOK, RUN_PASS_RATIO, DEFENSIVE_PLAYBOOK, BLITZ_RATIO),  
+	...  
 }
 `
 
