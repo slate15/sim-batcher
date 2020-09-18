@@ -82,13 +82,13 @@ The output saved to OUTPUT_FILENAME (default output/Results.csv) is basically a 
 
 Currently only the DSFL team codes are implemented in the code. They are:
 
-DAL - Dallas Birddogs
-KCC - Kansas City Coyotes
-LDN - London Royals
-MBB - Myrtle Beach Buccaneers
-MIN - Minnesota Grey Ducks
-NOR - Norfolk Seawolves
-POR - Portland Pythons
+DAL - Dallas Birddogs  
+KCC - Kansas City Coyotes  
+LDN - London Royals  
+MBB - Myrtle Beach Buccaneers  
+MIN - Minnesota Grey Ducks  
+NOR - Norfolk Seawolves  
+POR - Portland Pythons  
 TIJ - Tijuana Luchadores
 
 ## Miscellaneous
