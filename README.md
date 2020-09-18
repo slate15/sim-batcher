@@ -39,6 +39,8 @@ Note: The -N and -O arguments are optional. The default number of tests per stra
 
 This code is written for Python 3 and requires a copy of DDSPF 2016 to run (so it can simulate the games). This code requires the Python packages [ahk](https://github.com/spyoungtech/ahk), numpy, and pandas.
 
+If using Anaconda, the setup for this will be slightly different than in the Quick Setup Guide. I am not very familiar with Anaconda, so please let me know if you find a good way to set it up in that environment. In the meantime, running the commands listed above in the Anaconda Powershell Prompt seems to work sufficiently well.
+
 ### Settings
 
 The settings.py file contains most of the parameters that should remain the same across runs. These include:
@@ -92,5 +94,9 @@ POR - Portland Pythons
 TIJ - Tijuana Luchadores
 
 ## Miscellaneous
+
+Once again, **the league that you use must be first alphabetically in the dropdown menu**.
+
+If you enter a number of iterations to run for each strategy greater than MAX_ITERS (using the -N flag), the code will split that large number into multiple small batches running the same sim, which in total will sum to the target number of iterations. In this case, the league file will be saved and overwritten after each strategy change, so it's advisable to save a copy of the league file as a backup (and name it something alphabetically later so it appears underneath it in the dropdown).
 
 There are built-in failsafes for a few failure modes I've found so far which will allow the program to recover, reload the game, and run more tests if the game should crash for some reason.
