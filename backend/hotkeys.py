@@ -4,7 +4,6 @@ import time
 import warnings
 
 from ahk import AHK
-from ahk.keys import KEYS
 
 from settings import *
 

@@ -125,5 +125,4 @@ dmypy.json
 .pyre/
 
 # User defined ignores
-output/
 private-files/
