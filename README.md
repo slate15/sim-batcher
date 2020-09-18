@@ -53,6 +53,10 @@ The settings.py file contains most of the parameters that should remain the same
 
 These coordinates may change depending on screen size, resolution, etc. The provided autohotkey script "MousePosWatch.ank.ahk" in the utils/ folder can be used to find the x- and y- values for each button for your specific setup. With AutoHotkey installed, simply launch the script by double-clicking the file, press Ctrl-J to start the mouse tooltip, record the coordinates specified in the comments, and press Esc to exit the script once you're done.
 
+For the FOCUS_COORDINATES, it seems to work most consistently if you ensure that the coordinates are above the "League Settings" tab shown below on the Configuration screen. From here the default 16 tabs to reach Enable Personalities should work consistently.
+
+![League Settings Tab](focusCoordinatesTarget.png)
+
 8. Delay settings. Sometimes the DDSPF window is doing some stuff and needs time. These settings specify how long the code waits for those tasks to finish.
 
 ### Strategies
