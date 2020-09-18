@@ -64,9 +64,12 @@ For the FOCUS_COORDINATES, it seems to work most consistently if you ensure that
 An example strategy definition can be found in input/exampleStrats.py . The input is formatted as a list of Python dictionaries, where each dictionary contains a home strategy and/or an away strategy, plus a title for that test. The strategy is itself a Python dictionary meant to resemble how they are formatted in the game:
 
 `
-{  
-	DOWN_AND_DISTANCE: (OFFENSIVE_PLAYBOOK, RUN_PASS_RATIO, DEFENSIVE_PLAYBOOK, BLITZ_RATIO),  
-	...  
+{
+
+	DOWN_AND_DISTANCE: (OFFENSIVE_PLAYBOOK, RUN_PASS_RATIO, DEFENSIVE_PLAYBOOK, BLITZ_RATIO),
+
+	...
+	
 }
 `
 
