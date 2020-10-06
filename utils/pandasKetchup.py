@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 
 # Parameters
-file_path = "../output/Results.csv"
+file_path = "../output/iform-tests-tefb.csv"
 team_to_test = "Home"
 
 
@@ -16,7 +16,7 @@ X["HomeWin"] = X["HomeScore"] > X["AwayScore"]
 
 # Build list of strats
 strat_data = list()
-strat_names = X["Strat"].unique()
+strat_names = X["Strat"].dropna().unique()
 for strat in strat_names:
 	strat_data.append(X[X["Strat"] == strat].reset_index())
 
@@ -92,7 +92,8 @@ for i, df in enumerate(strat_data):
 
 		print("Penalties: {:.2f}".format(away_avg_pen))
 
-	# print("-----------------------------------")
-	print("\n\nPress <ENTER> for next results.")
-	input()
-	print("-----------------------------------")
+	if i != len(strat_data)-1:
+		# print("-----------------------------------")
+		print("\n\nPress <ENTER> for next results.")
+		input()
+		print("-----------------------------------")
