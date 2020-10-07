@@ -82,7 +82,26 @@ The output saved to OUTPUT_FILENAME (default output/Results.csv) is basically a 
 
 ## Team Codes
 
-Currently only the DSFL team codes are implemented in the code. They are:
+DSFL *and* ISFL teams are both supported!
+
+Team codes for the ISFL are:
+
+ARI - Arizona Outlaws  
+AUS - Austin Copperheads  
+BAL - Baltimore Hawks  
+BER - Berlin Fire Salamanders  
+CHI - Chicago Butchers  
+COL - Colorado Yeti  
+HON - Honolulu Hahalua  
+NOL - New Orleans Second Line (NOR was already taken by Norfolk, OK??)  
+NYS - New York Silverbacks  
+OCO - Orange County Otters  
+PHI - Philadelphia Liberty  
+SJS - San Jose Sabercats  
+SAR - Sarasota Sailfish  
+YKW - Yellowknife Wraiths
+
+And team codes for the DSFL are:
 
 DAL - Dallas Birddogs  
 KCC - Kansas City Coyotes  
