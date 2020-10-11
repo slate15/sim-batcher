@@ -262,8 +262,10 @@ class SimulationManager():
 			# random seed and ensure no duplicate data is obtained.
 			batch_end_time = time.time()
 			time_skip = np.maximum(220 - (batch_end_time - batch_start_time), 0)
+			assert time_skip + batch_end_time - batch_start_time >= 215
 
-			print("Incrementing system time by {} seconds".format(time_skip))
+			print("Elapsed time: {:.1f} seconds".format(batch_end_time - batch_start_time))
+			print("Incrementing system time by {:.1f} seconds\n".format(time_skip))
 
 			incrementSystemTime(time_skip)
 
