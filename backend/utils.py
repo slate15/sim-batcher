@@ -1,3 +1,7 @@
+import datetime
+import os
+import win32api as win
+
 from backend.strategy import *
 from backend.strategyConstants import OFF_PLAYBOOK, DEF_PLAYBOOK, OFF_RATIO, DEF_RATIO
 
@@ -70,3 +74,26 @@ def transformStratDict(strategy_dict):
 	}
 
 	return transformed_strat_dict
+
+# Add a specified number of seconds to the current system time
+def incrementSystemTime(secs):
+	current = win.GetSystemTime()
+	# win.getSystemTime() returns a tuple with day of week as the 3rd element of the tuple, which is extraneous
+	# for the python datetime package
+	T = datetime.datetime(*(current[:2] + current[3:]))
+
+	delta = datetime.timedelta(0, secs)
+	T_prime = T + delta
+	day_of_week = T_prime.isocalendar()[2]
+	T_tuple = tuple(T_prime.timetuple())
+	# Create a new tuple to use to set windows time from the Python datetime objects
+	future = T_tuple[:2] + (day_of_week,) + T_tuple[2:7]
+
+	T_new = win.SetSystemTime(*future)
+
+	return T_new
+
+
+# Forces the command line to resync system time
+def resyncSystemTime():
+	os.system("w32tm /resync /force")

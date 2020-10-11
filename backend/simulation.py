@@ -1,5 +1,5 @@
 import math
-import os
+import time
 import numpy as np
 import pandas as pd
 
@@ -13,7 +13,7 @@ from backend.strategy import *
 class Simulation():
 	# Initialize the Simulation object with the teams to simulate, their strategies,
 	# and a flag to indicate whether a single strategy provided is for the home team
-	# 
+	#
 	# team_codes: A string or tuple of length 1 or 2 giving the team codes to simulate
 	#             (or the single team for which the strategy is provided)
 	# strats: A single strategy.Strategy object or a tuple of length 1 or 2 containing
@@ -75,7 +75,7 @@ class Simulation():
 			changeTeamStrategy(ahk, self.away_team, self.away_strat.getTabCommands(), save_file)
 
 	# Simulate a specified number of games for this strategy
-	# 
+	#
 	# ahk: An autohotkey object to implement the commands
 	# N: the number of games to run, default 500
 	# home_team: If no home team was specified when initializing the Simulation
@@ -83,7 +83,7 @@ class Simulation():
 	#			 this argument does nothing.
 	# away_team: Likewise for the away team.
 	def simulateGames(self, ahk, N=500, home_team=None, away_team=None):
-		# 
+		#
 		if self.home_team is not None:
 			home_team_code = self.home_team
 		else:
@@ -121,7 +121,7 @@ class Simulation():
 # running the simulations, and recording, reformatting, and outputting the combined data.
 class SimulationManager():
 	# Initialize the SimulationManager object.
-	# 
+	#
 	# home_team: The team code for the home team in the tests.
 	# away_team: The team code for the away team in the tests.
 	# strats_list: A list of objects containing the Strategies to test. This can be a list of Strategy
@@ -168,7 +168,7 @@ class SimulationManager():
 			self.simulations.append(sim)
 
 		self.ahk = ahk
-		
+
 		# More simmed games can be requested than the game can handle (as indicated
 		# in the global variable MAX_ITERS). In this case, calculate how many times
 		# the game will have to be reloaded to complete that many iterations, and
@@ -222,18 +222,23 @@ class SimulationManager():
 	# Conduct the simulations for all strategies to test
 	def simulateAll(self):
 		batches = self.generateSimBatches()
+		prev_sim = None
 
 		for batch in batches:
+			batch_start_time = time.time()
 			game_data_exists = False
-
-			prev_sim = None
 
 			while not game_data_exists:
 				for sim in batch:
 					if prev_sim is None or sim.title != prev_sim.title:
 						print("Initializing strategy: {}".format(sim.title))
 						sim.initializeStrategies(self.ahk, self.iters_since_reload==0)
-					
+						# Since strategies have changed, the random seed being the same
+						# as the previous batch is not a serious issue. So we can resync
+						# the system time to the correct time to limit how far away it
+						# drifts.
+						resyncSystemTime()
+
 					print("Simulating {} games for strategy {}".format(
 						self.iters_per_sim, sim.title))
 					sim.simulateGames(self.ahk, N=self.iters_per_sim)
@@ -247,6 +252,21 @@ class SimulationManager():
 
 				game_data_exists = self.reloadAndSave(batch, clear_cache=False)
 
+			# If the next batch of sims starts within 214.75 seconds of the previous
+			# batch, the random seed will be identical and duplicate results will
+			# be obtained.
+			# So we increment the system time in order to force a change in the
+			# random seed and ensure no duplicate data is obtained.
+			batch_end_time = time.time()
+			time_skip = 220 - (batch_end_time - batch_start_time)
+			assert np.isclose(batch_end_time - batch_start_time + time_skip, 220.0)
+			print("Incrementing system time by {} seconds".format(time_skip))
+
+			incrementSystemTime(time_skip)
+
+		resyncSystemTime()
+
+
 	# Export any data for games that have been run, then save that data into the output
 	# file and reload the game window so that more sims can be run without crashing.
 	# Returns True if the game data is successfully found and added to the output data.
@@ -258,7 +278,7 @@ class SimulationManager():
 
 		exportSimFiles(self.ahk)
 		print("Complete!\n")
-		
+
 		# Once the sim files have exported, add the data from those simmed games
 		# into the complete output file.
 		game_data_exists = self.updateGameData(sims_since_reset)
