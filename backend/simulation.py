@@ -226,7 +226,6 @@ class SimulationManager():
 		prev_sim = None
 
 		for batch in batches:
-			batch_start_time = time.time()
 			game_data_exists = False
 
 			while not game_data_exists:
@@ -239,6 +238,9 @@ class SimulationManager():
 						# the system time to the correct time to limit how far away it
 						# drifts.
 						resyncSystemTime()
+
+
+					batch_start_time = time.time()
 
 					print("Simulating {} games for strategy {}".format(
 						self.iters_per_sim, sim.title))
@@ -259,8 +261,8 @@ class SimulationManager():
 			# So we increment the system time in order to force a change in the
 			# random seed and ensure no duplicate data is obtained.
 			batch_end_time = time.time()
-			time_skip = 220 - (batch_end_time - batch_start_time)
-			assert np.isclose(batch_end_time - batch_start_time + time_skip, 220.0)
+			time_skip = np.maximum(220 - (batch_end_time - batch_start_time), 0)
+
 			print("Incrementing system time by {} seconds".format(time_skip))
 
 			incrementSystemTime(time_skip)
