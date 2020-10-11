@@ -6,6 +6,7 @@ import pandas as pd
 import settings
 from backend.hotkeys import *
 from backend.strategy import *
+from backend.utils import *
 
 
 # An object for interfacing between a single strategy setup to test (including both
