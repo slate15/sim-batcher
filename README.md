@@ -10,13 +10,15 @@ Requires:
 1. Download this code as a .ZIP file and extract it to a directory
 2. Open the Command Prompt (cmd.exe) **as administrator** and navigate to that directory ("cd \<directory\>")
 3. Run `pip install -r requirements.txt --user`
-4. Open up the settings.py file in the text editor / IDE of your choice and change the filepaths as needed
-5. Open DDSPF and load the league you want to use (DSFL only at present)
-6. Launch utils/MousePosWatch.ank.ahk script, press Ctrl-J to start it, and use it to identify the mouse coordinates needed for settings.py (Press Esc to exit the MousePosWatch script)
-7. Open the Configuration menu in DDSPF and count how many tabs it takes you to reach the "Enable Personalities" box. Put this number in ENABLE_PERSONALITIES_TABS in settings.py.
-8. Press "Alt-F" to open the File menu dropdown, then count how many times you need to press the "Left" button to get to the "Export" menu dropdown. Put this number in LEFT_PRESSES_TO_EXPORT in settings.py.
-9. In the Command Prompt, run `python batchtest.py input/exampleStrats.py --home KCC --away MIN -N 50` (or you can use any other team codes you want for home/away)
-10. Message me on Discord if you have any issues to this point. Otherwise start defining your own strategies and running your own sim tests!
+4. Run `net start w32time`
+5. Run `w32tm /register`
+6. Open up the settings.py file in the text editor / IDE of your choice and change the filepaths as needed
+7. Open DDSPF and load the league you want to use (DSFL only at present)
+8. Launch utils/MousePosWatch.ank.ahk script, press Ctrl-J to start it, and use it to identify the mouse coordinates needed for settings.py (Press Esc to exit the MousePosWatch script)
+9. Open the Configuration menu in DDSPF and count how many tabs it takes you to reach the "Enable Personalities" box. Put this number in ENABLE_PERSONALITIES_TABS in settings.py.
+10. Press "Alt-F" to open the File menu dropdown, then count how many times you need to press the "Left" button to get to the "Export" menu dropdown. Put this number in LEFT_PRESSES_TO_EXPORT in settings.py.
+11. In the Command Prompt, run `python batchtest.py input/exampleStrats.py --home KCC --away MIN -N 50` (or you can use any other team codes you want for home/away)
+12. Message me on Discord if you have any issues to this point. Otherwise start defining your own strategies and running your own sim tests!
 
 ## Introduction
 
