@@ -28,6 +28,10 @@ To run a batch of tests, the main command that is used is:
 
 `python batchtest.py [STRATEGY_FILEPATH] -H [HOME_TEAM_CODE] -A [AWAY_TEAM_CODE] -N [NUM_TESTS] -O [OUTPUT_FILEPATH]`
 
+**Important**: This command must be run in a command prompt with Administrator permissions ("Run as Administrator"). This is so that the program will be able to manipulate your system's clock, described in more detail below. This is the purpose of steps 4 and 5 in the quick start guide, above - to enable the commands needed to do this.
+
+**Important**: In running this program, Alt-F4 will be pressed repeatedly and the system clock will be sent forward multiple times, so be sure to use this program carefully! Don't leave any windows open with unsaved work in them, and preferably have a backup available.
+
 What this does is:
 
 1. Read in the Strategies defined at STRATEGY_FILEPATH and convert them into Python objects
@@ -113,6 +117,12 @@ MIN - Minnesota Grey Ducks
 NOR - Norfolk Seawolves  
 POR - Portland Pythons  
 TIJ - Tijuana Luchadores
+
+## System Time Manipulation
+
+Based on findings from Katarn22, it turns out that the DDSPF16 random seed is reset only every ~214.75 seconds. This means that if two batches of tests start with the same random seed (which has a chance of happening if two batches are run consecutively with less than 215 seconds of separation), they will use the same random seed and get exactly identical results. This is okay if strategies or depth charts are changed between batches, but for large batches that require multiple reloads of the identical league file it can be an issue, and that is one of the main intended use cases of this tool.
+
+To solve this, we can advance the system clock to "trick" DDSPF into switching to a new random seed and getting different results, without having to wait for that amount of real time to elapse. My implementation uses the [pywin32](https://pypi.org/project/pywin32/) package to set the system time and the w32tm command line call to resync it occassionally so it doesn't deviate too far from reality.
 
 ## Miscellaneous
 
