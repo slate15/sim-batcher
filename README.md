@@ -109,14 +109,16 @@ YKW - Yellowknife Wraiths
 
 And team codes for the DSFL are:
 
+BBB - Bondi Beach Buccaneers
 DAL - Dallas Birddogs  
 KCC - Kansas City Coyotes  
 LDN - London Royals  
-MBB - Myrtle Beach Buccaneers  
 MIN - Minnesota Grey Ducks  
 NOR - Norfolk Seawolves  
 POR - Portland Pythons  
 TIJ - Tijuana Luchadores
+
+(No longer: MBB - Myrtle Beach Buccaneers)
 
 ## System Time Manipulation
 
