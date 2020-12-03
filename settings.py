@@ -5,7 +5,11 @@ GAME_APPLICATION_PATH = "C:/Program Files (x86)/Wolverine Studios/Draft Day Spor
 
 # The path to the game output file for the simulated games for the league being tested
 # IMPORTANT: The league must be the first alphabetically in the dropdown list that appears in File -> Open
-GAME_OUTPUT_FILE = "C:/Users/<Username>/Documents/DDSPF/Leagues/<League Name>/Output/<League Name>_Games.csv"
+GAME_OUTPUT_PATH = "C:/Users/<Name>/Documents/DDSPF/Leagues/"
+LEAGUE_NAME = "LEAGUE_NAME"
+
+GAMES_OUTPUT_FILE = GAME_OUTPUT_PATH + LEAGUE_NAME + "/Output/" + LEAGUE_NAME + "_Games.csv"
+
 # The path where you would like the combined output of all tests run to be saved to, can be overwritten with the -O command line flag
 RESULTS_FILE = "output/Results.csv"
 
@@ -36,12 +40,12 @@ CLOSE_TEAM_COORDINATES = (1900, 60)
 
 # Export buffer is the time that the program will wait for the game to finish generating the CSV files for the simulated games
 # If this is set too short, the output Games.csv will not have enough time to be made before the program tries to read data from it
-EXPORT_BUFFER_DELAY = 40
+EXPORT_BUFFER_DELAY = 38 # 35 for DSFL, 38 for ISFL
 # Launch buffer is the time that the program will wait for the game to open if it needs to be relaunched after crashing
-LAUNCH_BUFFER_DELAY = 15
+LAUNCH_BUFFER_DELAY = 5
 # League buffer is the time that the program will wait for the game to load the league file
-LEAGUE_BUFFER_DELAY = 18
+LEAGUE_BUFFER_DELAY = 12.5 # 10 for DSFL, 12.5 for ISFL
 # Save buffer is the time that the program will wait for the game to save any changes made to the league file (i.e. strategy settings)
-SAVE_BUFFER_DELAY = 3
+SAVE_BUFFER_DELAY = 1.5
 # Sim buffer is the time in between simulated games
 SIM_BUFFER_DELAY = 0.02

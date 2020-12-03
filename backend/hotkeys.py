@@ -10,30 +10,30 @@ from settings import *
 
 # Global variables
 # DSFL
-DSFL_TEAMS = ("DAL", "KCC", "LDN", "MIN", "MBB", "NOR", "POR", "TIJ")
+DSFL_TEAMS = ("BBB", "DAL", "KCC", "LDN", "MIN", "NOR", "POR", "TIJ")
 
 # Team list in exhibition game window
 DSFL_TEAM_LIST = {
-	"DAL": 0,
-	"KCC": 1,
-	"LDN": 2,
-	"MIN": 3,
-	"MBB": 4,
-	"NOR": 5,
-	"POR": 6,
-	"TIJ": 7
+    "BBB": 0,
+    "DAL": 1,
+    "KCC": 2,
+    "LDN": 3,
+    "MIN": 4,
+    "NOR": 5,
+    "POR": 6,
+    "TIJ": 7
 }
 
 # Team dropdown in "Teams" navigation menu
 DSFL_TEAM_NAV = {
-	"DAL": [1, 0],
-	"MBB": [1, 1],
-	"NOR": [1, 2],
-	"TIJ": [1, 3],
-	"KCC": [2, 0],
-	"LDN": [2, 1],
-	"MIN": [2, 2],
-	"POR": [2, 3],
+    "BBB": [1, 0],
+    "DAL": [1, 1],
+    "NOR": [1, 2],
+    "TIJ": [1, 3],
+    "KCC": [2, 0],
+    "LDN": [2, 1],
+    "MIN": [2, 2],
+    "POR": [2, 3],
 }
 
 # ISFL
